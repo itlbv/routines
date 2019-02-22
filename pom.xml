@@ -25,6 +25,7 @@
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.26</slf4j.version>
 
+        <!-- Servlet -->
         <servlet-api.version>4.0.1</servlet-api.version>
 
         <!-- Maven Compiler -->
@@ -61,6 +62,7 @@
             <version>${slf4j.version}</version>
         </dependency>
 
+        <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
