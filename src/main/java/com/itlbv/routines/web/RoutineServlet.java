@@ -1,9 +1,7 @@
 package com.itlbv.routines.web;
 
-import com.itlbv.routines.repository.RoutineRepository;
-import com.itlbv.routines.repository.mock.MockRoutineRepositoryImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,15 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(value = "/routines", name = "routinesServlet")
-public class RoutinesServlet extends HttpServlet {
-    private static final Logger log = LoggerFactory.getLogger(RoutinesServlet.class);
+public class RoutineServlet extends HttpServlet {
 
-    private RoutineRepository repository;
+    private RoutineRestController controller;
+    private ConfigurableApplicationContext springCtx;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        repository = new MockRoutineRepositoryImpl();
+        springCtx = new ClassPathXmlApplicationContext("/spring/spring-app.xml");
+        controller = springCtx.getBean(RoutineRestController.class);
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        springCtx.close();
     }
 
     @Override
@@ -30,15 +35,12 @@ public class RoutinesServlet extends HttpServlet {
 
         switch (action == null ? "getAll" : action) {
             case "update":
-                log.info("update {}", req.getParameter("id"));
                 break;
             case "delete":
-                log.info("delete");
                 break;
             default:
-                log.info("getAll");
                 req.setAttribute("routines",
-                        repository.getAll());
+                        controller.getAll());
                 req.getRequestDispatcher("/routinesServlet.jsp").forward(req, resp);
                 break;
         }
