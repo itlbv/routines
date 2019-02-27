@@ -2,6 +2,8 @@ package com.itlbv.routines.repository.mock;
 
 import com.itlbv.routines.model.Routine;
 import com.itlbv.routines.repository.RoutineRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -14,6 +16,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class MockRoutineRepositoryImpl implements RoutineRepository {
+    private static final Logger log = LoggerFactory.getLogger(MockRoutineRepositoryImpl.class);
+
     private ConcurrentHashMap<Integer, Routine> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 
@@ -49,6 +53,7 @@ public class MockRoutineRepositoryImpl implements RoutineRepository {
     }
 
     private void populateRepository() {
+        log.info("repository population");
         routinesForInitialPopulation.add(new Routine("Routine 1", "Description 1",
                 LocalDateTime.of(2019, Month.FEBRUARY, 20, 10, 0),
                 LocalDateTime.of(2019, Month.FEBRUARY, 20, 10, 0),
