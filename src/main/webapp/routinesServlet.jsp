@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://routines.itlbv.com/functions" %>
 <html>
@@ -22,7 +22,8 @@
         <tr>
             <td>${routine.name}</td>
             <td>${routine.description}</td>
-            <td>${fn:formatTime(routine.timeOfDay)}</td>
+                <%-- <td>${fn:formatTime(routine.timeOfDay)}</td> --%>
+            <td>${routine.timeOfDay}</td>
             <td><a href="routines?action=update&id=${routine.id}">Update</a></td>
             <td><a href="routines?action=delete&id=${routine.id}">Delete</a></td>
         </tr>

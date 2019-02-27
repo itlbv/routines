@@ -1,5 +1,7 @@
 package com.itlbv.routines.web;
 
+import com.itlbv.routines.repository.RoutineRepository;
+import com.itlbv.routines.repository.mock.MockRoutineRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +16,14 @@ import java.io.IOException;
 public class RoutinesServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(RoutinesServlet.class);
 
+    private RoutineRepository repository;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        repository = new MockRoutineRepositoryImpl();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -26,9 +36,9 @@ public class RoutinesServlet extends HttpServlet {
                 log.info("delete");
                 break;
             default:
-                log.info("get all");
+                log.info("getAll");
                 req.setAttribute("routines",
-                        null);
+                        repository.getAll());
                 req.getRequestDispatcher("/routinesServlet.jsp").forward(req, resp);
                 break;
         }
