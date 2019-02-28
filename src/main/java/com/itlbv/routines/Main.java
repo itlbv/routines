@@ -1,6 +1,6 @@
 package com.itlbv.routines;
 
-import com.itlbv.routines.repository.RoutineRepository;
+import com.itlbv.routines.web.RoutineRestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
-public class Main {
+class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
@@ -18,12 +18,11 @@ public class Main {
         ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
         System.out.println("Bean definition names: " + Arrays.toString(appCtx.getBeanDefinitionNames()));
 
-        RoutineRepository routineRepository = appCtx.getBean(RoutineRepository.class);
-        System.out.println(routineRepository.getAll());
+        //RoutineRepository routineRepository = appCtx.getBean(RoutineRepository.class);
+        //System.out.println(routineRepository.getAll());
 
-        //RoutineService routineService = appCtx.getBean(RoutineService.class);
-        //routineService.create();
-
+        RoutineRestController controller = appCtx.getBean(RoutineRestController.class);
+        System.out.println(controller.getAll());
         appCtx.close();
     }
 }

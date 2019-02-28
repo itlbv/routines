@@ -13,7 +13,7 @@ import java.util.List;
 public class RoutineRestController {
     private static final Logger log = LoggerFactory.getLogger(RoutineRestController.class);
 
-    private RoutineService service;
+    private final RoutineService service;
 
     @Autowired
     public RoutineRestController(RoutineService routineService) {

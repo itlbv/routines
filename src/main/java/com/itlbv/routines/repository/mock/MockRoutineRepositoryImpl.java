@@ -21,7 +21,7 @@ public class MockRoutineRepositoryImpl implements RoutineRepository {
     private ConcurrentHashMap<Integer, Routine> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 
-    private List<Routine> routinesForInitialPopulation = new ArrayList<>();
+    private final List<Routine> routinesForInitialPopulation = new ArrayList<>();
 
     {
         populateRepository();
