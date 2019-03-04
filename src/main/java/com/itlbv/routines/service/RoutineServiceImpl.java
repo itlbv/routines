@@ -25,7 +25,7 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public Routine create(Routine user) {
-        return null;
+        return repository.save(user);
     }
 
     @Override

@@ -16,6 +16,7 @@
         <th>Time of day</th>
     </tr>
     </thead>
+    <jsp:useBean id="routines" scope="request" type="java.util.List"/>
     <c:forEach items="${routines}" var="routine">
         <jsp:useBean id="routine" type="com.itlbv.routines.model.Routine"/>
         <%--        <tr class="${meal.excess ? 'excess' : 'normal'}">     --%>

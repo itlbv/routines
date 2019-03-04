@@ -1,5 +1,6 @@
 package com.itlbv.routines.web;
 
+import com.itlbv.routines.model.Routine;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 @WebServlet(value = "/routines", name = "routinesServlet")
 public class RoutineServlet extends HttpServlet {
@@ -34,15 +39,38 @@ public class RoutineServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         switch (action == null ? "getAll" : action) {
+            case "create":
             case "update":
+                Routine routine = action.equals("create") ?
+                        new Routine("", "",
+                                LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES),
+                                LocalDateTime.now().truncatedTo(ChronoUnit.HOURS).plusYears(1),
+                                LocalTime.now().truncatedTo(ChronoUnit.HOURS)) :
+                        controller.get(getId(req));
+                req.setAttribute("routine", routine);
+                req.getRequestDispatcher("/routineForm.jsp").forward(req, resp);
                 break;
             case "delete":
+                controller.delete(getId(req));
+                resp.sendRedirect("routines");
                 break;
+            case "getAll":
             default:
                 req.setAttribute("routines",
                         controller.getAll());
-                req.getRequestDispatcher("/routinesServlet.jsp").forward(req, resp);
+                req.getRequestDispatcher("/routines.jsp").forward(req, resp);
                 break;
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.setCharacterEncoding("UTF-8");
+
+    }
+
+    private int getId(HttpServletRequest req) {
+        String stringId = Objects.requireNonNull(req.getParameter("id"));
+        return Integer.parseInt(stringId);
     }
 }
