@@ -26,10 +26,6 @@ public class Routine extends AbstractBaseEntity {
         this.active = true;
     }
 
-    public boolean isNew() {
-        return (getId() == null);
-    }
-
     @Override
     public String toString() {
         return "Routine{" +

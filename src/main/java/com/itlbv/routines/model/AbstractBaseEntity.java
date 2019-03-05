@@ -9,6 +9,10 @@ public abstract class AbstractBaseEntity {
         this.name = name;
     }
 
+    public boolean isNew() {
+        return (getId() == null);
+    }
+
     public Integer getId() {
         return id;
     }
