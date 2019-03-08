@@ -11,9 +11,11 @@
     <jsp:useBean id="routine" type="com.itlbv.routines.model.Routine" scope="request"/>
     <form method="post" action="routines">
         <input type="hidden" name="id" value="${routine.id}">
+        <input type="hidden" name="startTime" value="${routine.startTime}">
+        <input type="hidden" name="endTime" value="${routine.endTime}">
         <dl>
             <dt>Name:</dt>
-            <dd>po<input type="text" value="${routine.name}" size=40 name="name" required></dd>
+            <dd><input type="text" value="${routine.name}" size=40 name="name" required></dd>
         </dl>
         <dl>
             <dt>Description:</dt>

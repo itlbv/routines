@@ -4,6 +4,10 @@ public abstract class AbstractBaseEntity {
     private Integer id;
     private String name;
 
+    AbstractBaseEntity() {
+
+    }
+
     AbstractBaseEntity(Integer id, String name) {
         this.id = id;
         this.name = name;

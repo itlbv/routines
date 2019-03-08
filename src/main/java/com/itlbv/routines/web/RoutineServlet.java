@@ -3,6 +3,7 @@ package com.itlbv.routines.web;
 import com.itlbv.routines.model.Routine;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,7 +67,19 @@ public class RoutineServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
-
+        Routine routine = new Routine(
+                req.getParameter("name"),
+                req.getParameter("description"),
+                LocalDateTime.parse(req.getParameter("startTime")),
+                LocalDateTime.parse(req.getParameter("endTime")),
+                LocalTime.parse(req.getParameter("timeOfDay"))
+        );
+        if (StringUtils.isEmpty(req.getParameter("id"))) {
+            controller.create(routine);
+        } else {
+            controller.update(routine, getId(req));
+        }
+        resp.sendRedirect("routines");
     }
 
     private int getId(HttpServletRequest req) {

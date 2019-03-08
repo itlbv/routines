@@ -2,6 +2,7 @@ package com.itlbv.routines.web;
 
 import com.itlbv.routines.model.Routine;
 import com.itlbv.routines.service.RoutineService;
+import com.itlbv.routines.util.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,16 @@ public class RoutineRestController {
         service = routineService;
     }
 
-    public Routine create(Routine user) {
-        log.info("create {}", user);
-        // TODO check if user is new
-        return service.create(user);
+    public Routine create(Routine routine) {
+        ValidationUtil.checkNew(routine);
+        log.info("create {}", routine);
+        return service.create(routine);
     }
 
-    public void update(Routine user) {
-        log.info("update {}", user);
-        // TODO check id consistency
-        service.update(user);
+    public void update(Routine routine, int id) {
+        ValidationUtil.checkIdConsistency(routine, id);
+        log.info("update {}", routine);
+        service.update(routine);
     }
 
     public void delete(int id) {

@@ -5,7 +5,6 @@ import java.time.LocalTime;
 
 public class Routine extends AbstractBaseEntity {
 
-    private String name;
     private String description;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -13,12 +12,7 @@ public class Routine extends AbstractBaseEntity {
     private boolean active;
 
     public Routine(String name, String description, LocalDateTime startTime, LocalDateTime endTime, LocalTime timeOfDay) {
-        this(null, name, description, startTime, endTime, timeOfDay);
-    }
-
-    private Routine(Integer id, String name, String description, LocalDateTime startTime, LocalDateTime endTime, LocalTime timeOfDay) {
-        super(id, name);
-        this.name = name;
+        super(null, name);
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -30,22 +24,12 @@ public class Routine extends AbstractBaseEntity {
     public String toString() {
         return "Routine{" +
                 "id=" + getId() +
-                ", name=" + name +
+                ", name=" + getName() +
                 ", description=" + description +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ",timeOfDay=" + timeOfDay +
-                ",active=" + active;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
+                ", active=" + active + "}";
     }
 
     public String getDescription() {

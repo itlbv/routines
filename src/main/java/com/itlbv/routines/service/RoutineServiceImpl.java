@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.itlbv.routines.util.ValidationUtil.checkNotFound;
+
 @Service
 public class RoutineServiceImpl implements RoutineService {
-
-    /*
-    @Autowired
-    RoutineRepository repository;
-    */
 
     private final RoutineRepository repository;
 
@@ -30,19 +27,17 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public void update(Routine user) {
-        repository.save(user);
+        checkNotFound(repository.save(user), user.getId()); //Routine
     }
 
     @Override
     public void delete(int id) throws NotFoundException {
-        // TODO check not found
-        repository.delete(id);
+        checkNotFound(repository.delete(id), id); //boolean true if success
     }
 
     @Override
     public Routine get(int id) throws NotFoundException {
-        // TODO check not found
-        return repository.get(id);
+        return checkNotFound(repository.get(id), id); //Routine
     }
 
     @Override

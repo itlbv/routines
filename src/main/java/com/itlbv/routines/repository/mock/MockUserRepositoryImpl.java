@@ -17,6 +17,11 @@ public class MockUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getByEmail(String email) {
+        return null;
+    }
+
+    @Override
     public boolean delete(int id) {
         return false;
     }

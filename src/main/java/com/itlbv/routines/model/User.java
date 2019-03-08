@@ -9,12 +9,27 @@ public class User extends AbstractBaseEntity {
     private Role role;
     private Instant timeDateOfRegistration;
 
-    public User(Integer id, String name, String email, String password, Role role) {
-        super(id, name);
+    public User() {
+
+    }
+
+    public User(String name, String email, String password, Role role) {
+        super(null, name);
         this.email = email;
         this.password = password;
         this.role = role;
         this.timeDateOfRegistration = Instant.now();
+    }
+
+    @Override
+    public String toString() {
+        return "User{"
+                + "id=" + getId()
+                + ", name=" + getName()
+                + ", email=" + email
+                + ", password=" + password
+                + ", role=" + role
+                + ", timeDateOfRegistration=" + timeDateOfRegistration + "}";
     }
 
     public String getEmail() {
