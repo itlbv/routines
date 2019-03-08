@@ -35,6 +35,7 @@
 
         <!-- Database -->
         <postgresql.version>42.2.5</postgresql.version>
+        <spring-jdbc.version>5.1.5.RELEASE</spring-jdbc.version>
 
         <!-- Maven Compiler -->
         <maven.compiler.source>11</maven.compiler.source>
@@ -99,7 +100,12 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
-            <type>bundle</type>
+            <!--<type>bundle</type>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-jdbc.version}</version>
         </dependency>
 
     </dependencies>
