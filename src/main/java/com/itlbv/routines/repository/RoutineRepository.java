@@ -5,7 +5,7 @@ import com.itlbv.routines.model.Routine;
 import java.util.List;
 
 public interface RoutineRepository {
-    Routine save(Routine user);
+    Routine save(Routine routine);
 
     Routine get(int id);
 
