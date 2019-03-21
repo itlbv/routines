@@ -47,8 +47,8 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         } else if (namedParameterJdbcTemplate.update(
                 "UPDATE users SET name=:name, " +
                         "email=:email, password=:password," +
-                        "timedateofregistration=:timeDateOfRegistration", map) == 0) {
-            return null;
+                        "timedateofregistration=:timeDateOfRegistration WHERE id=:id", map) == 0) {
+            return null; // TODO should it return Optional?
         }
         return user;
     }

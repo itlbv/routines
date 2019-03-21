@@ -4,7 +4,6 @@ import com.itlbv.routines.model.Routine;
 import com.itlbv.routines.repository.RoutineRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
 public class MockRoutineRepositoryImpl implements RoutineRepository {
     private static final Logger log = LoggerFactory.getLogger(MockRoutineRepositoryImpl.class);
 

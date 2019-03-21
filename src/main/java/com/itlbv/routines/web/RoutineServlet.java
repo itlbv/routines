@@ -25,7 +25,7 @@ public class RoutineServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        springCtx = new ClassPathXmlApplicationContext("/spring/spring-app.xml");
+        springCtx = new ClassPathXmlApplicationContext("/spring/spring-app.xml", "/spring/spring-db.xml");
         controller = springCtx.getBean(RoutineRestController.class);
     }
 

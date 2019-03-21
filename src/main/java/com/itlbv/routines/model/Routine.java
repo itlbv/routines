@@ -11,6 +11,10 @@ public class Routine extends AbstractBaseEntity {
     private LocalTime timeOfDay;
     private boolean active;
 
+    public Routine() {
+
+    }
+
     public Routine(String name, String description, LocalDateTime startTime, LocalDateTime endTime, LocalTime timeOfDay) {
         super(null, name);
         this.description = description;
