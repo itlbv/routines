@@ -21,7 +21,7 @@
         <tr>
             <td>${user.name}</td>
             <td>${user.email}</td>
-            <td>${user.timeDateOfRegistration}</td>
+            <td>${user.registeredTimeDate}</td>
             <td><a href="users?action=update&id=${user.id}">Update</a></td>
             <td><a href="users?action=delete&id=${user.id}">Delete</a></td>
         </tr>

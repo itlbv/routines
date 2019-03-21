@@ -40,7 +40,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
                 .addValue("email", user.getEmail())
                 .addValue("password", user.getPassword())
                 .addValue("role", user.getRole())
-                .addValue("timeDateOfRegistration", user.getTimeDateOfRegistration());
+                .addValue("timeDateOfRegistration", user.getRegisteredTimeDate());
         if (user.isNew()) {
             Number newId = simpleInsert.executeAndReturnKey(map);
             user.setId(newId.intValue());

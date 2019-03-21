@@ -1,14 +1,39 @@
 package com.itlbv.routines.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
 public class Routine extends AbstractBaseEntity {
 
+    @NotEmpty
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
+
+    @NotEmpty
+    @Column(nullable = false)
     private String description;
+
+    @NotEmpty
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
+
+    @NotEmpty
+    @Column(name = "end_time", nullable = false)
     private LocalDateTime endTime;
+
+    @NotEmpty
+    @Column(name = "time_of_day", nullable = false)
     private LocalTime timeOfDay;
+
+    @Column(nullable = false)
     private boolean active;
 
     public Routine() {

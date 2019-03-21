@@ -1,7 +1,19 @@
 package com.itlbv.routines.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public abstract class AbstractBaseEntity {
+
+    @Id
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     private Integer id;
+
+    @NotEmpty
+    @Column(name = "name", nullable = false)
     private String name;
 
     AbstractBaseEntity() {

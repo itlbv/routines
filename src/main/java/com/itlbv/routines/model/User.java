@@ -1,13 +1,32 @@
 package com.itlbv.routines.model;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 
+@Entity
+@Table(name = "users")
 public class User extends AbstractBaseEntity {
 
+    @NotEmpty
+    @Column(nullable = false)
     private String email;
+
+    @NotEmpty
+    @Column(nullable = false)
+    @Length(min = 6)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(nullable = false)
     private Role role;
-    private Instant timeDateOfRegistration;
+
+    @NotEmpty
+    @Column(name = "registered_time_date", nullable = false)
+    private Instant registeredTimeDate;
 
     public User() {
 
@@ -18,7 +37,7 @@ public class User extends AbstractBaseEntity {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.timeDateOfRegistration = Instant.now();
+        this.registeredTimeDate = Instant.now();
     }
 
     @Override
@@ -29,7 +48,7 @@ public class User extends AbstractBaseEntity {
                 + ", email=" + email
                 + ", password=" + password
                 + ", role=" + role
-                + ", timeDateOfRegistration=" + timeDateOfRegistration + "}";
+                + ", registeredTimeDate=" + registeredTimeDate + "}";
     }
 
     public String getEmail() {
@@ -56,11 +75,11 @@ public class User extends AbstractBaseEntity {
         this.role = role;
     }
 
-    public Instant getTimeDateOfRegistration() {
-        return timeDateOfRegistration;
+    public Instant getRegisteredTimeDate() {
+        return registeredTimeDate;
     }
 
-    public void setTimeDateOfRegistration(Instant timeDateOfRegistration) {
-        this.timeDateOfRegistration = timeDateOfRegistration;
+    public void setRegisteredTimeDate(Instant registeredTimeDate) {
+        this.registeredTimeDate = registeredTimeDate;
     }
 }

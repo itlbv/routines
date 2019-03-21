@@ -12,7 +12,7 @@
     <jsp:useBean id="user" type="com.itlbv.routines.model.User" scope="request"/>
     <form method="post" action="users">
         <input type="hidden" name="id" value="${user.id}">
-        <input type="hidden" name="timeDateOfRegistration" value="${user.timeDateOfRegistration}">
+        <input type="hidden" name="registeredTimeDate" value="${user.registeredTimeDate}">
         <dl>
             <dt>Name:</dt>
             <dd>po<input type="text" value="${user.name}" size=40 name="name" required></dd>
