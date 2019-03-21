@@ -35,7 +35,11 @@
 
         <!-- Database -->
         <postgresql.version>42.2.5</postgresql.version>
-        <spring-jdbc.version>5.1.5.RELEASE</spring-jdbc.version>
+
+        <!-- ORM -->
+        <spring-orm.version>5.1.5.RELEASE</spring-orm.version>
+        <hibernate.version>5.4.1.Final</hibernate.version>
+        <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
 
         <!-- Maven Compiler -->
         <maven.compiler.source>11</maven.compiler.source>
@@ -102,10 +106,22 @@
             <version>${postgresql.version}</version>
             <!--<type>bundle</type>-->
         </dependency>
+
+        <!-- ORM -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring-jdbc.version}</version>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring-orm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
     </dependencies>
