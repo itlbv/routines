@@ -9,7 +9,15 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
+@Table(name = "routines")
+@NamedQueries({
+        @NamedQuery(name = Routine.DELETE, query = "DELETE FROM Routine r WHERE r.id=:id"),
+        @NamedQuery(name = Routine.GET_ALL, query = "SELECT r FROM Routine r")
+})
 public class Routine extends AbstractBaseEntity {
+
+    public static final String DELETE = "Routine.delete";
+    public static final String GET_ALL = "Routine.getAll";
 
     @NotEmpty
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS routines;
 DROP SEQUENCE IF EXISTS global_seq;
 
@@ -12,6 +13,7 @@ CREATE TABLE users
   password             VARCHAR                           NOT NULL,
   registered_time_date TIMESTAMP           DEFAULT now() NOT NULL
 );
+CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
 
 CREATE TABLE roles
 (
