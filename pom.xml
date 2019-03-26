@@ -37,9 +37,9 @@
         <!-- Database -->
         <postgresql.version>42.2.5</postgresql.version>
         <tomcat-jdbc.version>9.0.17</tomcat-jdbc.version>
+        <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
 
         <!-- ORM -->
-        <spring-orm.version>5.1.5.RELEASE</spring-orm.version>
         <hibernate.version>5.4.1.Final</hibernate.version>
         <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
 
@@ -120,13 +120,14 @@
             <artifactId>tomcat-jdbc</artifactId>
             <version>${tomcat-jdbc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+
 
         <!-- ORM -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring-orm.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
