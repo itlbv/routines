@@ -36,6 +36,7 @@
 
         <!-- Database -->
         <postgresql.version>42.2.5</postgresql.version>
+        <tomcat-jdbc.version>9.0.17</tomcat-jdbc.version>
 
         <!-- ORM -->
         <spring-orm.version>5.1.5.RELEASE</spring-orm.version>
@@ -111,6 +112,11 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
             <!--<type>bundle</type>-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat-jdbc.version}</version>
         </dependency>
 
         <!-- ORM -->
