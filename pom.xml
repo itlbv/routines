@@ -28,7 +28,7 @@
         <slf4j.version>1.7.26</slf4j.version>
 
         <!-- Web -->
-        <servlet-api.version>4.0.1</servlet-api.version>
+        <tomcat-servlet-api.version>9.0.17</tomcat-servlet-api.version>
         <jstl.version>1.2</jstl.version>
 
         <!-- Spring -->
@@ -91,9 +91,10 @@
 
         <!-- Web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat-servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
