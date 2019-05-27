@@ -37,7 +37,7 @@
         <!-- Database -->
         <postgresql.version>42.2.5</postgresql.version>
         <tomcat-jdbc.version>9.0.17</tomcat-jdbc.version>
-        <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
 
         <!-- ORM -->
         <hibernate.version>5.4.1.Final</hibernate.version>
